@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class ChatMessage extends Model
+{
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'chat_id',
+        'user_id',
+        'message',
+        'replied_to_message_id',
+        'deleted_at',
+    ];
+
+    // Relations
+    public function chat()
+    {
+        return $this->belongsTo(Chat::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function repliedTo()
+    {
+        return $this->belongsTo(ChatMessage::class, 'replied_to_message_id');
+    }
+
+    public function attachment()
+    {
+        return $this->hasOne(ChatMessageAttachment::class);
+    }
+
+    public function reactions()
+    {
+        return $this->hasMany(ChatMessageReaction::class);
+    }
+
+    public function views()
+    {
+        return $this->hasMany(ChatMessageView::class);
+    }
+}
