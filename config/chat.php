@@ -4,27 +4,24 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Route Prefix
+    | Chat Configuration
     |--------------------------------------------------------------------------
     |
-    | This value is the prefix for your API routes.
+    | This file contains settings related to the chat system, including
+    | URL prefix, pagination limits, and user name column references.
     |
     */
 
+    // URL prefix for chat-related routes
     'prefix' => 'chat',
 
-    /*
-    |--------------------------------------------------------------------------
-    | User Name Columns
-    |--------------------------------------------------------------------------
-    |
-    | This value is the prefix for your API routes.
-    |
-    */
+    // Number of records per page for pagination
+    'paginate_records' => 25,
 
-    'user_name_cols' => [
+    // Columns used for retrieving user names from the users table
+    'name_cols_in_users_table' => [
         'name',
-        // 'first_name'
-        // 'last_name'
-    ]
+        // 'first_name',
+        // 'last_name',
+    ],
 ];

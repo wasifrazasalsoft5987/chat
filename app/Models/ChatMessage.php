@@ -18,6 +18,8 @@ class ChatMessage extends Model
         'deleted_at',
     ];
 
+    protected $with = ['user', 'attachment', 'reactions', 'views'];
+
     // Relations
     public function chat()
     {

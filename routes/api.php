@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ChatMessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,18 +32,16 @@ Route::prefix(config('chat.prefix'))->middleware('auth:sanctum')->group(function
     // Route::post('/{id}/delete', [ChatController::class, 'delete']);
     // Route::post('/{id}/leave', [ChatController::class, 'leave']);
 
+    // Route::get('/{id}/users', [ChatController::class, 'get_users']);
     // Route::post('/{id}/users/add', [ChatController::class, 'add_users']);
     // Route::post('/{id}/users/remove', [ChatController::class, 'remove_users']);
-    // Route::post('/{id}/users/{uid}/make-admin', [ChatController::class, 'make_admin']);
-    // Route::post('/{id}/users/{uid}/remove-admin', [ChatController::class, 'remove_admin']);
+    // Route::post('/{id}/users/{uid}/admin', [ChatController::class, 'manage_admin']);
 
-    // Route::post('/send-message', [ChatController::class, 'send_message']);
-
-    // Route::get('/{id}/messages', [ChatController::class, 'get_messages']);
-    // Route::get('/{id}/users', [ChatController::class, 'get_users']);
-    // Route::get('/{id}/messages/{mid}/likes', [ChatController::class, 'get_likes']);
-    // Route::get('/{id}/messages/{mid}/views', [ChatController::class, 'get_views']);
-    // Route::post('/{id}/messages/{mid}/update', [ChatController::class, 'update_message']);
-    // Route::post('/{id}/messages/{mid}/delete', [ChatController::class, 'delete_message']);
-    // Route::post('/{id}/messages/{mid}/like', [ChatController::class, 'like_message']);
+    Route::get('/{id}/messages', [ChatMessageController::class, 'index']);
+    Route::post('/{id}/messages', [ChatMessageController::class, 'send_message']);
+    // Route::get('/{id}/messages/{mid}/likes', [ChatMessageController::class, 'get_likes']);
+    // Route::post('/{id}/messages/{mid}/like', [ChatMessageController::class, 'like_message']);
+    // Route::get('/{id}/messages/{mid}/views', [ChatMessageController::class, 'get_views']);
+    // Route::post('/{id}/messages/{mid}/update', [ChatMessageController::class, 'update_message']);
+    // Route::post('/{id}/messages/{mid}/delete', [ChatMessageController::class, 'delete_message']);
 });

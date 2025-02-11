@@ -19,6 +19,8 @@ class Chat extends Model
         'created_by'
     ];
 
+    protected $with = ['users', 'messages', 'setting'];
+
     // Relations
     public function createdBy()
     {
